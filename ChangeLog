@@ -1,0 +1,9 @@
+2010-01-02 Romuald Rousseau <romualdroussea@msn.com>
+
+    === Branch for 1.0 ===
+
+    New project
+
+    * src/main.c: Adapted the code to be glib compliant.
+    
+
