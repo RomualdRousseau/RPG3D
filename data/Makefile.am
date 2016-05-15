@@ -1,10 +1,16 @@
 ## Makefile.am for RPG
 
 EXTRA_DIST =		\
-	splash.tga		\
-	font8x16.tga	\
-	blade.tga		\
-	blade.md2
+	hud.tga		\
+	megatron.tga	\
+	manor.obj	\
+	brick.tga	\
+	ceramic.tga	\
+	concreate.tga	\
+	roof.tga	\
+	stone.tga	\
+	wall.tga	\
+	wood.tga
 
 rpgdir = $(datadir)/$(package_name)
 rpg_DATA = $(EXTRA_DIST)
