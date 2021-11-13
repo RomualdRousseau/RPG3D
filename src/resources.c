@@ -155,38 +155,38 @@ resources_load_heroes(
 {
     if(g_str_equal(value->name, "meshes.hero1"))
     {
-/*
         r_resource_mesh_load(
             value,
-            PACKAGE_DATADIR "/ladydeath.md2",
+            PACKAGE_DATADIR "/blade.md2",
             r_resource_ref("meshes.hero1.skin")
             );
-*/
+/*
         r_resource_mesh_load_multiple(
             value,
             hero1_file_names,
             r_resource_ref("meshes.hero1.skin")
             );
+*/
     }
     else if(g_str_equal(value->name, "meshes.hero1.skin"))
     {
-        /*
         r_resource_material_load(
             value,
-            PACKAGE_DATADIR "/ladydeath.tga"
+            PACKAGE_DATADIR "/blade.tga"
             );
-        */
+/*
         r_resource_material_load(
             value,
             NULL
             );
         r_resource_link(value, "meshes.hero1");
+*/
     }
     else if(g_str_equal(value->name, "meshes.hero2"))
     {
         r_resource_mesh_load(
             value,
-            PACKAGE_DATADIR "/blade.md2",
+            PACKAGE_DATADIR "/ladydeath.md2",
             r_resource_ref("meshes.hero2.skin")
             );
     }
@@ -194,7 +194,7 @@ resources_load_heroes(
     {
         r_resource_material_load(
             value,
-            PACKAGE_DATADIR "/blade.tga"
+            PACKAGE_DATADIR "/ladydeath.tga"
             );
         r_resource_link(value, "meshes.hero2");
     }

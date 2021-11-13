@@ -91,7 +91,7 @@ _console_cursor_move_next_line()
     if(self.cursor_y >= BUFFER_HEIGHT)
     {
         self.cursor_y = BUFFER_HEIGHT - 1;
-        g_memmove(&self.text_buffer[0], &self.text_buffer[BUFFER_WIDTH], BUFFER_HEIGHT * BUFFER_WIDTH);
+        memmove(&self.text_buffer[0], &self.text_buffer[BUFFER_WIDTH], BUFFER_HEIGHT * BUFFER_WIDTH);
     }
 }
 

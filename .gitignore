@@ -22,6 +22,7 @@ Makefile.in
 *.ko
 *.obj
 *.elf
+*.Po
 
 # Precompiled Headers
 *.gch
@@ -34,6 +35,7 @@ Makefile.in
 *.lo
 *.Plo
 *.Plai
+*.lai
 
 # Shared objects (inc. Windows DLLs)
 *.dll
@@ -54,7 +56,7 @@ Makefile.in
 *.su
 
 # Backup files
-*.*~
+*~
 
 # Build
 /build/

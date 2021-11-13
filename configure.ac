@@ -1,6 +1,6 @@
 ## configure.ac for test2
 
-AC_INIT([RPG], [1.0], [romualdrousseau@msn.com])
+AC_INIT([RPG],[1.0],[romualdrousseau@msn.com])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign subdir-objects])
 AC_CONFIG_HEADERS([config.h])
 AC_CONFIG_FILES([Makefile src/Makefile src/rlib/Makefile data/Makefile docs/Makefile])
@@ -11,7 +11,7 @@ AC_CONFIG_FILES([Makefile src/Makefile src/rlib/Makefile data/Makefile docs/Make
 #===
 AC_ARG_ENABLE(
  debug,
- AC_HELP_STRING([--enable-debug], [build with debugging information (default no)]),,
+ AS_HELP_STRING([--enable-debug],[build with debugging information (default no)]),,
  enable_debug=no
 )
 if test "x$enable_debug" = "xyes"; then
@@ -32,7 +32,7 @@ fi
 #===
 AM_PROG_AR
 AC_PROG_CC
-AC_PROG_LIBTOOL
+LT_INIT
 AC_CONFIG_MACRO_DIR(m4)
 AC_CHECK_HEADER(stdio.h)
 AC_CHECK_HEADER(math.h)
@@ -44,7 +44,7 @@ AC_DEFINE(PACKAGE_DATADIR, [DATADIR "/" PACKAGE_NAME], [Define the default data 
 #===
 AC_ARG_ENABLE(
  test_coverage,
- AC_HELP_STRING([--enable-test-coverage], [build with test coverage information (default no)]),,
+ AS_HELP_STRING([--enable-test-coverage],[build with test coverage information (default no)]),,
  enable_test_coverage=no
 )
 if test "x$enable_test_coverage" = "xyes"; then
@@ -56,7 +56,7 @@ fi
 #===
 AC_ARG_ENABLE(
  fast_math,
- AC_HELP_STRING([--enable-fast-math], [enable fast math (default yes)]),,
+ AS_HELP_STRING([--enable-fast-math],[enable fast math (default yes)]),,
  enable_fast_math=yes
 )
 if test "x$enable_fast_math" = "xyes"; then
@@ -69,7 +69,7 @@ fi
 #===
 AC_ARG_ENABLE(
  back_buffer,
- AC_HELP_STRING([--enable-back-buffer], [use back buffer when rendering (default yes)]),,
+ AS_HELP_STRING([--enable-back-buffer],[use back buffer when rendering (default yes)]),,
  enable_back_buffer=yes
 )
 if test "x$enable_back_buffer" = "xyes"; then
@@ -81,7 +81,7 @@ fi
 #===
 AC_ARG_ENABLE(
  vsync,
- AC_HELP_STRING([--enable-vsync], [synchronize to vertical trace when rendering (default no)]),,
+ AS_HELP_STRING([--enable-vsync],[synchronize to vertical trace when rendering (default no)]),,
  enable_vsync=no
 )
 if test "x$enable_vsync" = "xyes"; then
@@ -101,43 +101,37 @@ AC_CHECK_HEADER(
 #===
 # Check xf86dga extension
 #===
-AC_HAVE_LIBRARY(
- Xxf86dga,
- AC_CHECK_HEADER(
+AC_CHECK_LIB([Xxf86dga],[main],[AC_CHECK_HEADER(
   X11/extensions/Xxf86dga.h,
-  [
+  
    AC_DEFINE(HAVE_XF86DGA_H, 1, [Define to 1 if you have the <X11/extensions/Xxf86dga.h> header file.])
    LIBS="$LIBS -lXxf86dga"
-  ],
-  AC_MSG_ERROR([Required header <X11/extensions/Xxf86dga.h> is missing]),
-  [#include <X11/Xlib.h>]
- ),
- AC_MSG_ERROR([Required library Xxf86dga is missing])
-)
+  ,
+  AC_MSG_ERROR(Required header <X11/extensions/Xxf86dga.h> is missing),
+  #include <X11/Xlib.h>
+ )],[AC_MSG_ERROR(Required library Xxf86dga is missing)
+],[])ac_cv_lib_Xxf86dga=ac_cv_lib_Xxf86dga_main
+
 
 #===
 # Check Xrandr extension
 #===
-AC_HAVE_LIBRARY(
- Xrandr,
- AC_CHECK_HEADER(
+AC_CHECK_LIB([Xrandr],[main],[AC_CHECK_HEADER(
   X11/extensions/Xrandr.h,
-  [
+  
    AC_DEFINE(HAVE_XRANDR_H, 1, [Define to 1 if you have the <X11/extensions/Xrandr.h> header file.])
    LIBS="$LIBS -lXrandr"
-  ],
-  AC_MSG_ERROR([Required header <X11/extensions/Xrandr.h> is missing]),
-  [#include <X11/Xlib.h>]
- ),
- AC_MSG_ERROR([Required library Xrandr is missing])
-)
+  ,
+  AC_MSG_ERROR(Required header <X11/extensions/Xrandr.h> is missing),
+  #include <X11/Xlib.h>
+ )],[AC_MSG_ERROR(Required library Xrandr is missing)
+],[])ac_cv_lib_Xrandr=ac_cv_lib_Xrandr_main
+
 
 #===
 # Check OpenGL (GL, GLX, GLU and GLEW)
 #===
-AC_HAVE_LIBRARY(
- GL,
- [
+AC_CHECK_LIB([GL],[main],[
   AC_CHECK_HEADER(
    GL/gl.h,
    AC_DEFINE(HAVE_GL_H, 1, [Define to 1 if you have the <GL/gl.h> header file.]),
@@ -151,12 +145,10 @@ AC_HAVE_LIBRARY(
    [#include <GL/gl.h>]
   )
   LIBS="$LIBS -lGL"
- ],
- AC_MSG_ERROR([Required library GL is missing])
-)
-AC_HAVE_LIBRARY(
- GLEW,
- [
+ ],[AC_MSG_ERROR(Required library GL is missing)
+],[])ac_cv_lib_GL=ac_cv_lib_GL_main
+
+AC_CHECK_LIB([GLEW],[main],[
   AC_CHECK_HEADER(
    GL/glew.h,
    AC_DEFINE(HAVE_GLEW_H, 1, [Define to 1 if you have the <GL/glew.h> header file.]),
@@ -164,9 +156,9 @@ AC_HAVE_LIBRARY(
    [#include <GL/glew.h>]
   )
   LIBS="$LIBS -lGLEW"
- ],
- AC_MSG_ERROR([Required library GLEW is missing])
-)
+ ],[AC_MSG_ERROR(Required library GLEW is missing)
+],[])ac_cv_lib_GLEW=ac_cv_lib_GLEW_main
+
 
 #===
 # Check GLib (at least 2.16)

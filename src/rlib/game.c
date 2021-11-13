@@ -66,10 +66,6 @@ const gint              visual_attributes[][16] =
 static void
 _game_thread_init()
 {
-    if(!g_thread_supported())
-    {
-        //g_thread_init(NULL);
-    }
     if(!XInitThreads())
     {
         g_error("Could not initialize Xlib thread support");
@@ -295,10 +291,7 @@ r_game_usleep(
 guint64
 r_game_current_time()
 {
-    GTimeVal now;
-
-    g_get_current_time(&now);
-    return now.tv_sec * G_USEC_PER_SEC + now.tv_usec;
+    return g_get_real_time();
 }
 
 /**

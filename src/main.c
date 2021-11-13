@@ -129,12 +129,10 @@ main(
     gchar**     argv
     )
 {
-    //g_mem_set_vtable(glib_mem_profiler_table);
     g_message(PACKAGE_STRING " linux x-86");
     r_game_init(argc, argv);
     _game_init();
     r_game_main();
     g_message("Shutdown.");
-    //g_mem_profile();
     return 0;
 }

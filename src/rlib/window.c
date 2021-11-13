@@ -310,7 +310,6 @@ r_window_set_grab_input(
         if(!self.fullscreen)
         {
             XUngrabKeyboard(game->display, CurrentTime);
-
             XUngrabPointer(game->display, CurrentTime);
         }
 

@@ -116,7 +116,7 @@ hero_physic()
                 {
                     hero->action = ENTITY_ACTION_JUMPING;
                 }
-                if(!hero->animating && (hero->velocity.y == 0.0f))
+                if((hero->velocity.y == 0.0f))
                 {
                     hero->velocity.y = +0.15f;
                 }

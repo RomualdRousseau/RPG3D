@@ -107,19 +107,19 @@ renderer_scene_render()
             r_matrix_rotate(&matrix, -90.0f, &p1);
             if(hero->action == ENTITY_ACTION_NONE)
             {
-                hero->animating = r_mesh_draw_full(&matrix, hero->mesh, 0, 16, 10, TRUE);
+                hero->animating = r_mesh_draw_full(&matrix, hero->mesh, 0, 39, 9, TRUE);
             }
             else if(hero->action == ENTITY_ACTION_RUNNING)
             {
-                hero->animating = r_mesh_draw_full(&matrix, hero->mesh, 17, 21, 10, TRUE);
+                hero->animating = r_mesh_draw_full(&matrix, hero->mesh, 40, 45, 10, TRUE);
             }
             else if(hero->action == ENTITY_ACTION_JUMPING)
             {
-                hero->animating = r_mesh_draw_full(&matrix, hero->mesh, 22, 26, 10, FALSE);
+                hero->animating = r_mesh_draw_full(&matrix, hero->mesh, 66, 71, 7, FALSE);
             }
             else if(hero->action == ENTITY_ACTION_FALLING)
             {
-                hero->animating = r_mesh_draw_full(&matrix, hero->mesh, 27, 30, 10, FALSE);
+                hero->animating = r_mesh_draw_full(&matrix, hero->mesh, 54,  57,  7, FALSE);
             }
             glDisable(GL_LIGHTING);
             
