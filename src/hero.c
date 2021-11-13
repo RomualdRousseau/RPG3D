@@ -34,7 +34,17 @@ const gchar* HeroNames[] =
 };
 
 /* --- variables --- */
-static Entity _hero = {{0.0f, 4.0f, 0.0f}, 0.0f, {0.0f, 0.0f, 0.0f}, TRUE, ENTITY_ACTION_NONE, ENTITY_ACTION_NONE, NULL, {{0.0f}, {0.0f}}, NULL};
+static Entity _hero = {
+    {0.0f, 4.0f, 0.0f},
+    0.0f,
+    {0.0f, 0.0f, 0.0f},
+    TRUE,
+    ENTITY_ACTION_NONE,
+    ENTITY_ACTION_NONE,
+    NULL,
+    {{0.0f}, {0.0f}},
+    NULL
+};
 Entity* hero = &_hero;
 
 /* --- functions --- */
