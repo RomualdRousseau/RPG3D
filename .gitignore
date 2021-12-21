@@ -60,3 +60,6 @@ Makefile.in
 
 # Build
 /build/
+
+# Tags
+tags
