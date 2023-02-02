@@ -1,6 +1,9 @@
 # http://www.gnu.org/software/automake
 
 Makefile.in
+.deps/
+.dirstamp
+.libs
 
 # http://www.gnu.org/software/autoconf
 
@@ -10,12 +13,15 @@ Makefile.in
 /aclocal.m4
 /compile
 /config.h.in
+/config.log
+/config.status
 /configure
 /configure.scan
 /depcomp
 /install-sh
 /missing
 /stamp-h1
+/libtool
 
 # Object files
 *.o
